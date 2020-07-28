@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/components/roundBar.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:healthify/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'Login_Screen';
@@ -10,8 +13,39 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool showSpinner = false;
-  String email;
-  String password;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseUser _user;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  bool isSignIn = false;
+
+  Future<void> handleSignIn() async {
+    GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
+    GoogleSignInAuthentication googleSignInAuthentication =
+    await googleSignInAccount.authentication;
+
+    AuthCredential credential = GoogleAuthProvider.getCredential(
+        idToken: googleSignInAuthentication.idToken,
+        accessToken: googleSignInAuthentication.accessToken);
+
+    AuthResult result = (await _auth.signInWithCredential(credential));
+
+    _user = result.user;
+
+    setState(() {
+      isSignIn = true;
+    });
+  }
+  Future<void> googleSignOut() async {
+    await _auth.signOut().then((onValue) {
+      _googleSignIn.signOut();
+      setState(() {
+        isSignIn = false;
+      });
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,10 +65,20 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 24.0,
             ),
             RoundBar(
-              title:'Google Sign In',
               colour: Colors.teal,
-              onPressed: () {
-                print('Logged In');
+              title: 'Sign In With Google',
+              onPressed: ()async{
+                  await handleSignIn();
+                  try{
+                    if(isSignIn==true)
+                      {
+                        Navigator.pushNamed(context, HomeScreen.id);
+                      }
+                  }
+                  catch(e)
+                {
+                  print(e);
+                }
               },
             ),
           ],
