@@ -5,6 +5,9 @@ import 'package:healthify/screens/login_screen.dart';
 void main() => runApp(Healthify());
 
 class Healthify extends StatelessWidget {
+  void nothing(){
+      print('This Function does nothing');
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -12,7 +15,7 @@ class Healthify extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
     routes: {
-    HomeScreen.id : (context) => HomeScreen(),},
+    HomeScreen.id : (context) => HomeScreen(nothing)},
     );
   }
 }

@@ -5,6 +5,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:healthify/screens/home_screen.dart';
 
+String name;
+String profilePic;
 class LoginScreen extends StatefulWidget {
   static const String id = 'Login_Screen';
   @override
@@ -16,25 +18,35 @@ class _LoginScreenState extends State<LoginScreen> {
   FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseUser _user;
   GoogleSignIn _googleSignIn = GoogleSignIn();
-
   bool isSignIn = false;
 
   Future<void> handleSignIn() async {
-    GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleSignInAuthentication =
+    final GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googleSignInAuthentication =
     await googleSignInAccount.authentication;
 
-    AuthCredential credential = GoogleAuthProvider.getCredential(
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
         idToken: googleSignInAuthentication.idToken,
         accessToken: googleSignInAuthentication.accessToken);
 
-    AuthResult result = (await _auth.signInWithCredential(credential));
+    final AuthResult result = (await _auth.signInWithCredential(credential));
 
-    _user = result.user;
+    final _user = result.user;
 
+    assert(_user.displayName!=null);
+    assert(_user.photoUrl!=null);
+    assert(_user.email!=null);
+
+
+    name = _user.displayName;
+    profilePic = _user.photoUrl;
     setState(() {
       isSignIn = true;
     });
+
+    if (name.contains(" ")) {
+      name = name.substring(0, name.indexOf(" "));
+    }
   }
   Future<void> googleSignOut() async {
     await _auth.signOut().then((onValue) {
@@ -67,12 +79,13 @@ class _LoginScreenState extends State<LoginScreen> {
             RoundBar(
               colour: Colors.teal,
               title: 'Sign In With Google',
+              picture: Image(image: AssetImage("images/google_logo.png"), height: 35.0),
               onPressed: ()async{
                   await handleSignIn();
                   try{
                     if(isSignIn==true)
                       {
-                        Navigator.pushNamed(context, HomeScreen.id);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(googleSignOut)));
                       }
                   }
                   catch(e)
