@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         title: 'View Previous Results',
                         colour: Colors.teal,
                         onPressed: (){
-                          //TODO:Add the screen to navigate to see the previous results here.
+                          //TODO:Add the screen to navigate to see the previous results here
                         },
                       )
                     ],
