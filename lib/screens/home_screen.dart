@@ -93,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         colour: Colors.teal,
                         onPressed: () {
                           //TODO:Add BMI navigator here.
+                          //smjha
                         }
                       ),
                       SizedBox(
