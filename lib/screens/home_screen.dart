@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         title: 'Calculate BMI',
                         colour: Colors.teal,
                         onPressed: () {
-                          //Add BMI navigator her
+                          //TODO:Add BMI navigator here.
                         }
                       ),
                       SizedBox(
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         title: 'View Previous Results',
                         colour: Colors.teal,
                         onPressed: (){
-                          //Add BMI navigator here.
+                          //TODO:Add the screen to navigate to see the previous results here.
                         },
                       )
                     ],
