@@ -6,3 +6,6 @@ An application built on the Flutter framework to cater to one's health needs. Th
  - Firebase Authentication
  - Google Sign In
  - Cloud Firestore
+
+
+Note - This app has only been developed for android.
