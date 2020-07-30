@@ -12,7 +12,7 @@ e). Enable google authentication from your firebase console and set up your supp
 f). Do not forget to fill the Gooogle OAuth consent form.<br/>
 g). That's it. Your App is Ready to use.<br/>
 
-## Frameworks Used
+## Packages Used
  - Firebase Authentication
  - Google Sign In
  - Cloud Firestore
