@@ -1,14 +1,21 @@
 import 'package:flutter/cupertino.dart';
-import 'package:healthify/components/CalculateBrain.dart';
 import 'package:healthify/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:healthify/components/reusable_card.dart';
 import 'package:healthify/screens/pre_final.dart';
 import 'input_page.dart';
-import 'package:healthify/components/CalculateBrain.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'login_screen.dart';
+import 'package:healthify/screens/progress.dart';
+import 'package:intl/intl.dart';
 
+DateFormat dateFormat = DateFormat("yyyy-MM-dd");
+final _firestore = Firestore.instance;
+FirebaseUser loggedInUser;
+String difference;
+String gainWeight;
 class ResultsPage extends StatelessWidget {
   ResultsPage(
       {this.bmiResult, this.status, this.advice, this.bmr, this.weightChange});
@@ -16,12 +23,10 @@ class ResultsPage extends StatelessWidget {
   final String status;
   final String advice;
   final double bmr;
-  String difference;
   final double weightChange;
-  String gainWeight;
-
+  String dateString = dateFormat.format(DateTime.now());
   bool unfit() {
-    bool unfit;
+    //bool unfit;
     if (status == 'Normal')
       return false;
     else
@@ -93,7 +98,11 @@ class ResultsPage extends StatelessWidget {
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: () {
-                            //TODO : push data (double bmi (it is globally defined and imported here.) and date) to cloud firestore
+                            _firestore.collection(email).add({
+                              'BMI': bmiResult,
+                              'Date': dateString,
+                            });
+                            Navigator.pushNamed(context, Progress.id);
                           },
                           width: 120,
                         )
@@ -117,7 +126,7 @@ class ResultsPage extends StatelessWidget {
                         context: context,
                         style: AlertStyle(backgroundColor: Colors.white),
                         type: AlertType.info,
-                        title: 'You need to $gainWeight ${difference} kg',
+                        title: 'You need to $gainWeight $difference kg',
                         desc: "Are you Ready?",
                         buttons: [
                           DialogButton(
@@ -125,15 +134,15 @@ class ResultsPage extends StatelessWidget {
                             child: Text(
                               "LET's GO !",
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
+                              TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             onPressed: () => Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                              return UserResponse(
-                                bmr: bmr,
-                                weightChange: weightChange,
-                              );
-                            })),
+                                  return UserResponse(
+                                    bmr: bmr,
+                                    weightChange: weightChange,
+                                  );
+                                })),
                             width: 120,
                           )
                         ],
@@ -143,9 +152,9 @@ class ResultsPage extends StatelessWidget {
                   child: Container(
                     child: Center(
                         child: Text(
-                      'HEALTHIFY ME',
-                      style: kBodyTextStyle,
-                    )),
+                          'HEALTHIFY ME',
+                          style: kBodyTextStyle,
+                        )),
                     margin: EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(

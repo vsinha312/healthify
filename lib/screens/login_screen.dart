@@ -7,7 +7,7 @@ import 'package:healthify/screens/home_screen.dart';
 
 String name;
 String profilePic;
-
+String email;
 class LoginScreen extends StatefulWidget {
   static const String id = 'Login_Screen';
   @override
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       isSignIn = true;
     });
-
+    email = _user.email;
     if (name.contains(" ")) {
       name = name.substring(0, name.indexOf(" "));
     }
