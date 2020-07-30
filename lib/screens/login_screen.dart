@@ -7,6 +7,7 @@ import 'package:healthify/screens/home_screen.dart';
 
 String name;
 String profilePic;
+
 class LoginScreen extends StatefulWidget {
   static const String id = 'Login_Screen';
   @override
@@ -21,9 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isSignIn = false;
 
   Future<void> handleSignIn() async {
-    final GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
+    final GoogleSignInAccount googleSignInAccount =
+        await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleSignInAuthentication =
-    await googleSignInAccount.authentication;
+        await googleSignInAccount.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.getCredential(
         idToken: googleSignInAuthentication.idToken,
@@ -33,10 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
     final _user = result.user;
 
-    assert(_user.displayName!=null);
-    assert(_user.photoUrl!=null);
-    assert(_user.email!=null);
-
+    assert(_user.displayName != null);
+    assert(_user.photoUrl != null);
+    assert(_user.email != null);
 
     name = _user.displayName;
     profilePic = _user.photoUrl;
@@ -48,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
       name = name.substring(0, name.indexOf(" "));
     }
   }
+
   Future<void> googleSignOut() async {
     await _auth.signOut().then((onValue) {
       _googleSignIn.signOut();
@@ -57,12 +59,11 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      backgroundColor: Color(0xFF175873),
+//      backgroundColor: Color(0xFF175873),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -77,19 +78,22 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 24.0,
             ),
             RoundBar(
-              colour: Colors.teal,
+//              colour: Colors.teal,
+              colour: Colors.white,
+              textColor: Colors.black,
               title: 'Sign In With Google',
-              picture: Image(image: AssetImage("images/google_logo.png"), height: 35.0),
-              onPressed: ()async{
-                  await handleSignIn();
-                  try{
-                    if(isSignIn==true)
-                      {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(googleSignOut)));
-                      }
+              picture: Image(
+                  image: AssetImage("images/google_logo.png"), height: 35.0),
+              onPressed: () async {
+                await handleSignIn();
+                try {
+                  if (isSignIn == true) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HomeScreen(googleSignOut)));
                   }
-                  catch(e)
-                {
+                } catch (e) {
                   print(e);
                 }
               },

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:healthify/constants.dart';
 
 class RoundBar extends StatelessWidget {
-
-  RoundBar({@required this.colour,@required this.title, @required this.onPressed, this.picture});
+  RoundBar(
+      {@required this.colour,
+      @required this.title,
+      @required this.onPressed,
+      this.picture,
+      this.textColor});
   final Color colour;
   final String title;
   final Function onPressed;
   final Image picture;
-
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +38,9 @@ class RoundBar extends StatelessWidget {
                   child: Text(
                     title,
                     style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w300,
+                      color: textColor,
                     ),
                   ),
                 )
@@ -46,13 +52,13 @@ class RoundBar extends StatelessWidget {
     );
   }
 }
-class ClickBar extends StatelessWidget {
 
-  ClickBar({@required this.colour,@required this.title, @required this.onPressed});
+class ClickBar extends StatelessWidget {
+  ClickBar(
+      {@required this.colour, @required this.title, @required this.onPressed});
   final Color colour;
   final String title;
   final Function onPressed;
-
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +74,7 @@ class ClickBar extends StatelessWidget {
           height: 42.0,
           child: Text(
             title,
-            style: TextStyle(
-              color: Colors.white,
-            ),
+            style: kBodyTextStyle,
           ),
         ),
       ),
