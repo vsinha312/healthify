@@ -14,6 +14,7 @@ enum Gender {
 }
 double bmr;
 double weightChange;
+double bmi;
 
 class InputPage extends StatefulWidget {
   static const String id = 'Input_Screen';
@@ -233,6 +234,7 @@ class _InputPageState extends State<InputPage> {
                 weightChange = 0;
 
               bmr = bmrCalc.calculate();
+              bmi = calc.calculateBMI();
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return ResultsPage(
                   bmiResult: calc.calculateBMI().toStringAsFixed(1),

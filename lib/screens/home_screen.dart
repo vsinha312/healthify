@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:healthify/constants.dart';
 import 'package:healthify/screens/input_page.dart';
+import 'package:healthify/screens/progress.dart';
 import 'login_screen.dart';
 import 'package:healthify/components/roundBar.dart';
 
@@ -118,6 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         colour: kSelectedGenderColor,
                         onPressed: () {
                           //TODO:Add the screen to navigate to see the previous results here
+                          Navigator.pushNamed(context, Progress.id);
                         },
                       )
                     ],

@@ -7,6 +7,7 @@ import 'package:healthify/screens/login_screen.dart';
 import 'package:healthify/screens/input_page.dart';
 import 'package:healthify/screens/pre_final.dart';
 import 'package:healthify/screens/results_page.dart';
+import 'package:healthify/screens/progress.dart';
 
 import 'screens/login_screen.dart';
 
@@ -29,6 +30,7 @@ class Healthify extends StatelessWidget {
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         HomeScreen.id: (context) => HomeScreen(nothing),
+        Progress.id: (context) => Progress(),
         InputPage.id: (context) => InputPage(),
 //        ResultsPage.id: (context)=> ResultsPage();
       },

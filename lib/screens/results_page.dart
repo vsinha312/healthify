@@ -61,9 +61,12 @@ class ResultsPage extends StatelessWidget {
                     bmiResult,
                     style: kBMITextStyle,
                   ),
-                  Text(
-                    advice,
-                    style: kBodyTextStyle,
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    child: Text(
+                      advice,
+                      style: kBodyTextStyle,
+                    ),
                   ),
                 ],
               ),
@@ -75,7 +78,28 @@ class ResultsPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: RoundIconButton(
-                  action: () {},
+                  action: () {
+                    Alert(
+                      context: context,
+                      style: AlertStyle(backgroundColor: Colors.white),
+                      type: AlertType.warning,
+                      title: 'Save BMI to record ? ',
+                      desc: "Saving False BMI will contaminate your record.",
+                      buttons: [
+                        DialogButton(
+                          color: Colors.green,
+                          child: Text(
+                            "Save",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () {
+                            //TODO : push data (double bmi (it is globally defined and imported here.) and date) to cloud firestore
+                          },
+                          width: 120,
+                        )
+                      ],
+                    ).show();
+                  },
                   icon: Icons.save,
                 ),
               ),

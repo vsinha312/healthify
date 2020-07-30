@@ -100,50 +100,53 @@ class _UserResponseState extends State<UserResponse> {
               ),
             ),
           ),
-          ReusableCard(
-            colour: kDefaultCardColor,
-            cardChild: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Select your Activity Level',
-                    style: kBodyTextStyle.copyWith(
-                        fontWeight: FontWeight.w900, color: Colors.blue),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                    height: 50,
+          Expanded(
+            child: ReusableCard(
+              colour: kDefaultCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '${newList.statements[activityLevel - 1]}',
-                      textAlign: TextAlign.center,
-                      style:
-                          kBodyTextStyle.copyWith(fontWeight: FontWeight.w100),
+                      'Select your Activity Level',
+                      style: kBodyTextStyle.copyWith(
+                          fontWeight: FontWeight.w900, color: Colors.blue),
                     ),
                   ),
-                ),
-                SliderTheme(
-                  data: SliderThemeData(
-                      activeTrackColor: kSelectedGenderColor,
-                      thumbColor: kBottomBarColor,
-                      overlayColor: Color(0x29ffffff),
-                      thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 15.0)),
-                  child: Slider(
-                    value: activityLevel.toDouble(),
-                    min: 1,
-                    max: 5,
-                    inactiveColor: Colors.grey,
-                    onChanged: (double newValue) {
-                      setState(() {
-                        activityLevel = newValue.round();
-                      });
-                    },
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Container(
+                      height: 50,
+                      child: Text(
+                        '${newList.statements[activityLevel - 1]}',
+                        textAlign: TextAlign.center,
+                        style: kBodyTextStyle.copyWith(
+                            fontWeight: FontWeight.w100),
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  SliderTheme(
+                    data: SliderThemeData(
+                        activeTrackColor: kSelectedGenderColor,
+                        thumbColor: kBottomBarColor,
+                        overlayColor: Color(0x29ffffff),
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0)),
+                    child: Slider(
+                      value: activityLevel.toDouble(),
+                      min: 1,
+                      max: 5,
+                      inactiveColor: Colors.grey,
+                      onChanged: (double newValue) {
+                        setState(() {
+                          activityLevel = newValue.round();
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Row(
@@ -158,7 +161,7 @@ class _UserResponseState extends State<UserResponse> {
                         Alert(
                           context: context,
                           style: AlertStyle(backgroundColor: Colors.white),
-                          type: AlertType.warning,
+                          type: AlertType.error,
                           title: 'Target Period NOT FEASIBLE',
                           desc: "Increase the number of weeks",
                         ).show();
