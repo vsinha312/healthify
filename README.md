@@ -13,16 +13,7 @@ f). Do not forget to fill the Gooogle OAuth consent form.<br/>
 g). That's it. Your App is Ready to use.<br/>
 
 ## Screenshots
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip1.JPG)
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip2.JPG)
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip3.JPG)
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip4.JPG)
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip5.JPG)
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip6.JPG)
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip7.JPG)
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip8.JPG)
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip9.JPG)
-![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip10.JPG)
+<img src="https://user-images.githubusercontent.com/59926553/89010082-8cf2d380-d32b-11ea-845f-3a17e54ea59b.JPG" width="18%"></img> <img src="https://user-images.githubusercontent.com/59926553/89010087-8e240080-d32b-11ea-8aa3-48fb1d0b2242.JPG" width="18%"></img> <img src="https://user-images.githubusercontent.com/59926553/89010090-8ebc9700-d32b-11ea-8d57-17c25b31aa83.JPG" width="18%"></img> <img src="https://user-images.githubusercontent.com/59926553/89010094-90865a80-d32b-11ea-9e9d-0c580be9d7bb.JPG" width="18%"></img> <img src="https://user-images.githubusercontent.com/59926553/89010111-9845ff00-d32b-11ea-9393-27a676cfebd5.JPG" width="18%"></img> <img src="https://user-images.githubusercontent.com/59926553/89010116-9a0fc280-d32b-11ea-9fa5-7629baf702ec.JPG" width="18%"></img> <img src="https://user-images.githubusercontent.com/59926553/89010128-9e3be000-d32b-11ea-8c69-38881eb4a697.JPG" width="18%"></img> <img src="https://user-images.githubusercontent.com/59926553/89010139-a3992a80-d32b-11ea-85c6-42faee39327d.JPG" width="18%"></img> <img src="https://user-images.githubusercontent.com/59926553/89010149-a7c54800-d32b-11ea-9e4d-ac464d752379.JPG" width="18%"></img> <img src="https://user-images.githubusercontent.com/59926553/89010156-aac03880-d32b-11ea-8bc0-ddb42322f8e6.JPG" width="18%"></img> 
 
 ## Packages Used
  - Firebase Authentication
