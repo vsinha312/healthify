@@ -12,6 +12,18 @@ e). Enable google authentication from your firebase console and set up your supp
 f). Do not forget to fill the Gooogle OAuth consent form.<br/>
 g). That's it. Your App is Ready to use.<br/>
 
+## Screenshots
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip1.JPG)
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip2.JPG)
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip3.JPG)
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip4.JPG)
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip5.JPG)
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip6.JPG)
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip7.JPG)
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip8.JPG)
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip9.JPG)
+![alt text](https://github.com/vsinha312/healthify/blob/master/screenshots/snip10.JPG)
+
 ## Packages Used
  - Firebase Authentication
  - Google Sign In
