@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:healthify/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'login_screen.dart';
-import 'package:healthify/user.dart';
 
 final _firestore = Firestore.instance;
 class Progress extends StatefulWidget {
@@ -12,13 +10,7 @@ class Progress extends StatefulWidget {
 }
 
 class _ProgressState extends State<Progress> {
-  //List<User> data = List<User>();
 
-  @override
-  void initState() {
-    getData();
-    super.initState();
-  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,13 +19,43 @@ class _ProgressState extends State<Progress> {
           title: Text('Your BMI Record'),
         ),
         body: Container(
-            color: Colors.white,
             child: Column(
               children: <Widget>[
-              ],
-            )
+              Expanded(
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: _firestore.collection(email).snapshots(),
+                  builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> querySnapshot){
+                    if(querySnapshot.hasError)
+                      {
+                        return Text("Error, Data Not Found");
+                      }
+                    if(!querySnapshot.hasData)
+                      {
+                        return Text("Error, Data Not Found");
+                      }
+                    if(querySnapshot.connectionState==ConnectionState.waiting)
+                      {
+                        return CircularProgressIndicator();
+                      }
+                    else{
+                      final list = querySnapshot.data.documents;
+                    return ListView.builder(
+                        itemBuilder: (context, index){
+                      return ListTile(
+                        title: Text('BMI: '+ list[index]['BMI']),
+                        subtitle: Text('Date Recorded: ' + list[index]['Date']),
+                      );
+                    },
+                      itemCount: list.length,
+                  );
+                    }
+                },
+                ),
+              ),
+        ],
+            ),
         ),
-      ),
-    );
+    ),);
   }
 }
+
