@@ -16,6 +16,7 @@ final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
 String difference;
 String gainWeight;
+
 class ResultsPage extends StatelessWidget {
   ResultsPage(
       {this.bmiResult, this.status, this.advice, this.bmr, this.weightChange});
@@ -102,7 +103,7 @@ class ResultsPage extends StatelessWidget {
                               'BMI': bmiResult,
                               'Date': dateString,
                             });
-                            Navigator.pushNamed(context, Progress.id);
+                            Navigator.pop(context);
                           },
                           width: 120,
                         )
@@ -134,15 +135,15 @@ class ResultsPage extends StatelessWidget {
                             child: Text(
                               "LET's GO !",
                               style:
-                              TextStyle(color: Colors.white, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             onPressed: () => Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
-                                  return UserResponse(
-                                    bmr: bmr,
-                                    weightChange: weightChange,
-                                  );
-                                })),
+                              return UserResponse(
+                                bmr: bmr,
+                                weightChange: weightChange,
+                              );
+                            })),
                             width: 120,
                           )
                         ],
@@ -152,9 +153,9 @@ class ResultsPage extends StatelessWidget {
                   child: Container(
                     child: Center(
                         child: Text(
-                          'HEALTHIFY ME',
-                          style: kBodyTextStyle,
-                        )),
+                      'HEALTHIFY ME',
+                      style: kBodyTextStyle,
+                    )),
                     margin: EdgeInsets.all(10),
                     height: 50,
                     decoration: BoxDecoration(
