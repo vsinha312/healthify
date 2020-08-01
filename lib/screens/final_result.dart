@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:healthify/components/reusable_card.dart';
 import 'package:healthify/constants.dart';
+import 'home_screen.dart';
 import 'pre_final.dart';
 
 class FinalResult extends StatelessWidget {
@@ -10,7 +12,18 @@ class FinalResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Here is your path'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text('Here is your path'),
+            IconButton(
+              icon: Icon(FontAwesomeIcons.home),
+              onPressed: () {
+                Navigator.pushNamed(context, HomeScreen.id);
+              },
+            )
+          ],
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
