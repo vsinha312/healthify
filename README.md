@@ -7,7 +7,7 @@ This app requires you to use Firebase Console. Hence, in order to use the app po
 a). Generate SHA1 and SHA256 key for your PC.<br/>
 b). If you want to change the application ID, go to android->app->build.gradle and change the application id.<br/>
 c). Set up Firebase console. Make sure to add the SHA1 and SHA256 keys.<br/>
-d). Download the google-services.json file which has not been provided in this repository. Place it innside android->app.<br/>
+d). Download the google-services.json file which has not been provided in this repository. Place it inside android->app.<br/>
 e). Enable google authentication from your firebase console and set up your support email.<br/>
 f). Do not forget to fill the Gooogle OAuth consent form.<br/>
 g). That's it. Your App is Ready to use.<br/>
